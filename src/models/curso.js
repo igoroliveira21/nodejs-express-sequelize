@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   class Curso extends Model {
     static associate(models) {
       Curso.belongsTo(models.Categoria, {
-        foreignKey: 'categoria_id'
+        foreignKey: 'categoria_id' // varios cursos podem ter a mesma categoria
       });
       Curso.belongsTo(models.Pessoa, {
         foreignKey: 'docente_id'
