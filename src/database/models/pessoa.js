@@ -1,5 +1,6 @@
 'use strict';
-const isCpfValido = require('../../utils/validaCpfHelper.js')
+const isCpfValido = require('../../utils/validaCpfHelper.js');
+
 const {
   Model
 } = require('sequelize');
@@ -7,10 +8,11 @@ module.exports = (sequelize, DataTypes) => {
   class Pessoa extends Model {
     static associate(models) {
       Pessoa.hasMany(models.Curso, {
-        foreignKey: 'docente_id' //hasMany tem vários cursos
+        foreignKey: 'docente_id'
       });
       Pessoa.hasMany(models.Matricula, {
         foreignKey: 'estudante_id',
+        // scope: { status: 'matriculado' },
         as: 'aulasMatriculadas'
       });
     }
@@ -35,10 +37,10 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     cpf: {
-      type:DataTypes.STRING,
+      type: DataTypes.STRING,
       validate: {
         cpfEhValido: (cpf) => {
-          if (!isCpfValido(cpf)) throw new Error('número de cpf inválido');
+          if (!isCpfValido(cpf)) throw new Error('numero de CPF inválido');
         }
       }
     },
@@ -49,9 +51,9 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'Pessoa',
     tableName: 'pessoas',
     paranoid: true,
-    defaultScope: { //escopo de modelo
+    defaultScope: {
       where: {
-        ativo: true, 
+        ativo: true,
       }
     },
     scopes: {

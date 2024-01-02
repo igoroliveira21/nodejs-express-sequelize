@@ -15,7 +15,6 @@ class PessoaServices extends Services {
     const listaPessoas = await super.pegaRegistrosPorEscopo('todosOsRegistros');
     return listaPessoas;
   }
-
 }
 
 module.exports = PessoaServices;

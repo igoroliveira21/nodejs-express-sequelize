@@ -1,8 +1,7 @@
 const express = require('express');
 const pessoas = require('./pessoasRoute.js');
-const categorias = require('./categoriaRoute.js');
-const cursos = require('./cursoRoute.js');
-
+const categorias = require('./categoriasRoute.js');
+const cursos = require('./cursosRoute.js');
 
 module.exports = app => {
   app.use(
